@@ -1,0 +1,65 @@
+.profile_card
+{
+    width: 100%; 
+}
+
+.img-fluid
+{
+    width: 70px;
+    height: 70px;
+    max-width: 100%;
+}
+
+/* file */
+.file 
+{
+    cursor: pointer;
+    
+}
+.folder 
+{
+    cursor: pointer;
+    
+}
+
+.disk
+{
+    pointer-events: none;
+    width: 9.375rem;
+    height: 16.25rem;
+}
+
+.disk img
+{
+    width: 150px;
+    height: 150px;
+    max-width: 100%;
+}
+
+.col-right
+{
+    width: 100%;
+}
+
+/*
+Right block
+*/
+
+.img-preview
+{
+    width: 150px;
+    height: 150px;
+    max-width: 100%;
+}
+
+#file-functions{
+    visibility: hidden;
+}
+/* #folder-functions{
+    visibility: hidden;
+} */
+
+#folder-functions-delete
+{
+    display: none;
+}

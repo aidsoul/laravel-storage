@@ -1,0 +1,4 @@
+function message(type, message)
+{
+    
+}
