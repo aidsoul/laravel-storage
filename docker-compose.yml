@@ -1,0 +1,35 @@
+version: '3'
+services:
+    app:
+        build:
+            context: .
+            dockerfile: ./_docker/Dockerfile
+        container_name: laravel-app
+        ports:
+            - 80:80
+        volumes:
+            - ./:/var/www/html
+            - ./_docker/php.ini:/etc/php/conf.d/php.ini 
+            - .:/workspace:cached
+        networks:
+            - laravel-project
+        depends_on:
+            - mysql
+    mysql:
+        image: mysql:8.0
+        container_name: laravel-db
+        restart: unless-stopped
+        volumes:
+            - ./tmp/mysql:/var/lib/mysql
+        ports:
+            - 3306:3306
+        environment:
+            MYSQL_DATABASE: storage
+            MYSQL_ROOT_PASSWORD: root
+        command:  mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+        networks:
+            - laravel-project
+
+networks:
+    laravel-project:
+        driver: bridge
