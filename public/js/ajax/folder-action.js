@@ -4,18 +4,16 @@ domLoaded(function () {
 
     let folderAction = function (e) {
         let item = e.target;
-
-
         // Delete folder
-            // let deleteButton = document.querySelector('div#folder-functions-delete');
-            // deleteButton.style.display = 'block';
-            // let folderid = item.getAttribute('data-folder');
-            // document.querySelector('input#folder-temporaryId').value = folderid;
-            // deleteFolder();
+            let deleteButton = document.querySelector('div#folder-functions-delete');
+            deleteButton.style.display = 'block';
+            let folderid = item.getAttribute('data-folder');
+            document.querySelector('input#folder-temporaryId').value = folderid;
+            deleteFolder();
         // END
-        // let folderDeleteInfo = deleteButton.querySelector('p.folder-delete-info');
-        // let folderName = item.querySelector('p#folder-name').innerHTML;
-        // folderDeleteInfo.innerHTML = 'Удалить папку: ' + folderName + ' ?'; 
+        let folderDeleteInfo = deleteButton.querySelector('p.folder-delete-info');
+        let folderName = item.querySelector('p#folder-name').innerHTML;
+        folderDeleteInfo.innerHTML = 'Удалить папку: ' + folderName + ' ?'; 
 
         let fileFunctionBlock = document.querySelector('div#file-functions');
         fileFunctionBlock.style.visibility = 'hidden';
@@ -34,7 +32,7 @@ domLoaded(function () {
         folder[i].addEventListener('dblclick', folderOpen);
     }
 
-    let foldersAndFiles = document.querySelector('div#folders-and-files');
+    // let foldersAndFiles = document.querySelector('div#folders-and-files');
 
     // foldersAndFiles.addEventListener('rightclick', function(e){
     //     let fileFunctionBlock = document.querySelector('div#file-functions');

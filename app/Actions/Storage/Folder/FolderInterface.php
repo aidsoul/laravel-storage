@@ -2,9 +2,11 @@
 
 namespace App\Actions\Storage\Folder;
 
-use App\Http\Requests\Storage\FolderCreateForm;
+use App\Actions\Storage\Folder\Create\CreateInterface;
+use App\Actions\Storage\Folder\Delete\DeleteInterface;
 
 interface FolderInterface
 {
-    public function create(FolderCreateForm $request, string $id): bool;
+    public static function create(): CreateInterface;
+    public static function delete() : DeleteInterface;
 }

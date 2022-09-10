@@ -11,5 +11,4 @@ function deleteFolder()
             }
         });
     });
-    console.log(url);
 }

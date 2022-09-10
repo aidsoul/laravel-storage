@@ -197,6 +197,7 @@ class Upload implements UploadInterface
             if (!Storage::disk('private')->exists($path)) {
                 Storage::makeDirectory($path);
             }
+            
             $thumbnail = Image::make(Storage::get($filePath));
             $thumbnail->resize(150, 150);
             $thumbnail->save($basePath .

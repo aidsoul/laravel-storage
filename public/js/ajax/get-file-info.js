@@ -6,7 +6,7 @@ domLoaded(function () {
         // folderBlock.style.visibility = 'hidden';
         // folderBlock.style.position = 'absolute';
         // Delete folder
-            // document.querySelector('div#folder-functions-delete').style.display = 'none';
+            document.querySelector('div#folder-functions-delete').style.display = 'none';
         // END
         fileFunctionBlock.style.visibility = 'visible';
 

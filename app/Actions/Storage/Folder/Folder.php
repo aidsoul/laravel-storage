@@ -2,10 +2,10 @@
 
 namespace App\Actions\Storage\Folder;
 
-use App\Actions\Sibling;
-use App\Http\Requests\Storage\FolderCreateForm;
-use App\Models\FolderModel;
-use Illuminate\Support\Facades\Storage;
+use App\Actions\Storage\Folder\Create\Create;
+use App\Actions\Storage\Folder\Create\CreateInterface;
+use App\Actions\Storage\Folder\Delete\Delete;
+use App\Actions\Storage\Folder\Delete\DeleteInterface;
 
 /**
  * Folder class
@@ -16,34 +16,22 @@ use Illuminate\Support\Facades\Storage;
 class Folder implements FolderInterface
 {   
     /**
-     * Create folder function
+     * Create function
      *
-     * @param \App\Http\Requests\Storage\FolderCreateForm $request
-     * @param string $id
-     * 
-     * @return boolean
+     * @return \App\Actions\Storage\Folder\Create\CreateInterface
      */
-    public function create(FolderCreateForm $request, string $id): bool
+    public static function create(): CreateInterface
     {
-        $validate = $request->validated();
-        $user = Auth()->user();
-        $folderId = base64_decode($id); 
-        $folder = new FolderModel();
-        $folder->name = $validate['folderName'];
-        $folder->user_id = $user->id;
-        $folder->parent_id = $folderId;
-        $path = '';
+        return new Create();
+    }
 
-        $path = Sibling::get($folder, $folderId);
-        $pathSave = $path . '/' . $validate['folderName'];
-        if(!Storage::disk('private')->exists($pathSave))
-        {
-            Storage::makeDirectory($pathSave);
-            $folder->save();
-            return true;
-        }else{
-            return false;
-        }
-        
+    /**
+     * Delete function
+     *
+     * @return \App\Actions\Storage\Folder\Delete\DeleteInterface
+     */
+    public static function delete() : DeleteInterface
+    {
+        return new Delete();
     }
 }
